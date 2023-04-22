@@ -6,6 +6,13 @@ This project uses the SAMD21 platform to create a powerful faker to arm your O3.
 
 I added also a PAN servo support. However both ARM and PAN signals have to come through SBUS as I specifically built it to use with the XF NANO RX.
 
+**Features**
+
+- O3 ARM State so you can get the full power
+- VBAT Display - YES
+- PAN Servo Support
+- More to come
+
 **Get Started**
 
 1. Install the libs used for this one via the Arduino IDE:
