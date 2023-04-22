@@ -26,29 +26,27 @@
 // Receiver Input
 #define RX_INPUT RX_INPUT_SBUS
 
-#define RX_CHANNEL_ARM 6 // RX Channel for ARM (it's channel-1)
-#define RX_CHANNEL_PAN 5 // RX Channel for PAN
+#define RX_CHANNEL_ARM 6  // RX Channel for ARM (it's channel-1)
+#define RX_CHANNEL_PAN 5  // RX Channel for PAN
 
 // Battery Output
 #define VBAT_OUTPUT
-#define VBAT_MODIFIER 30.49 // this is the modifer for the vbat
+#define VBAT_MODIFIER 30.49  // this is the modifer for the vbat
 #define VBAT_SAMPLE_SIZE 10
 
 // Pan Servo Output
-#define PAN_OUTPUT // comment out to disable
+#define PAN_OUTPUT  // comment out to disable
 
 #ifdef PAN_OUTPUT
 #define PAN_PIN A8
 #endif
-
-..
 
 // ----------------------------------------------------------------
 // DO NOT CHANGE ANYTHING AFTER HERE EXCEPT YOU KNOW WHAT YOU DOING
 // ----------------------------------------------------------------
 
 #include <ReefwingMSP.h>
-    ReefwingMSP msp;
+  ReefwingMSP msp;
 
 #if RX_INPUT == RX_INPUT_SBUS
 #include <ReefwingSBUS.h>
@@ -66,8 +64,8 @@ msp_api_version_t api;
 msp_ident_t identReply;
 msp_packet_t packet;
 msp_fc_variant_t variant;
-msp_status_DJI_t status_DJI = {0};
-msp_battery_DJI_t status_battery = {0};
+msp_status_DJI_t status_DJI = { 0 };
+msp_battery_DJI_t status_battery = { 0 };
 
 uint32_t flightModeFlags = 0x00000002;
 uint32_t update_t = 0;
@@ -83,14 +81,12 @@ float vbat_sum = 0;
 uint8_t vbat_count = 0;
 #endif
 
-void setup()
-{
+void setup() {
 #ifdef DEBUG
   Serial.begin(115200);
 #endif
   Serial1.begin(115200);
   msp.begin(Serial1);
-#if
 #if RX_INPUT == RX_INPUT_SBUS
   receiver.begin();
 #endif
@@ -112,11 +108,9 @@ void setup()
   delay(1500);
 }
 
-void loop()
-{
+void loop() {
 #if RX_INPUT == RX_INPUT_SBUS
-  if (receiver.read(&channels[0], &failSafe, &lostFrame))
-  {
+  if (receiver.read(&channels[0], &failSafe, &lostFrame)) {
 
     rxArm = channels[RX_CHANNEL_ARM];
     armed = rxArm >= SWITCH_ON;
@@ -133,20 +127,17 @@ void loop()
 #endif
 #endif
   }
+#endif
 
-  if (armed)
-  {
-    flightModeFlags = 0x00000003;   // armed
-    digitalWrite(LED_BUILTIN, LOW); // turn the LED on
-  }
-  else if (armed == 0)
-  {
-    flightModeFlags = 0x00000002;    // disarmed
-    digitalWrite(LED_BUILTIN, HIGH); // turn the LED off
+  if (armed) {
+    flightModeFlags = 0x00000003;    // armed
+    digitalWrite(LED_BUILTIN, LOW);  // turn the LED on
+  } else if (armed == 0) {
+    flightModeFlags = 0x00000002;     // disarmed
+    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED off
   }
 
-  if (millis() - update_t > 100)
-  {
+  if (millis() - update_t > 100) {
     // flight modes
     status_DJI.flightModeFlags = flightModeFlags;
     status_DJI.armingFlags = 0x0303;
@@ -158,8 +149,7 @@ void loop()
 #ifdef VBAT_OUTPUT
     vbat_sum += analogRead(A2) / VBAT_MODIFIER;
     vbat_count++;
-    if (vbat_count >= VBAT_SAMPLE_SIZE)
-    {
+    if (vbat_count >= VBAT_SAMPLE_SIZE) {
       vbat = vbat_sum / vbat_count;
       status_battery.voltage = constrain(vbat / 0.1, 0, 255);
       status_battery.extvolts = vbat;
