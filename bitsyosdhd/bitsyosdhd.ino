@@ -1,20 +1,41 @@
-/*
- * O3 Arm Faker+ for SAMD21
- *
- * Inspired by https://github.com/ramiss/arduino_DJI_03_RC_ARM this firmware
- * aims to produce a way to get most out of your O3 without having an FC.
- * Great for your fixed wing aircraft or simple builds.
- *
- *
- * @author FLYANDI (flyandi@yahoo.com)
- */
+/**
+   ___  _ __           ____  _______ 
+  / _ )(_) /____ __ __/ __ \/ __/ _ \
+ / _  / / __(_-</ // / /_/ /\ \/ // /
+/____/_/\__/___/\_, /\____/___/____/ HD
+               /___/                 
+
+BitsyOSD HD - A minimalistic OSD-only firmware for a new ERA.
+Designed for Multicopters, Airplanes and UGV's.
+
+LEGAL INFORMATION
+http://github.com/flyandi/bitsyosdhd
+Copyright (c) 2023. All rights reserved. 
+
+Author: flyandi
+Version: 1.0
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>
+**/
+
 
 // Writing
 // SAMDX1
 // A9 SBUS
 // A8 Servo
 // TX/RX DJI
-#include "def.h"
+#include "const.h"
+#include "msp.h"
+#include "config.h"
 
 // ----------------------------------------------------------------
 // Configuration

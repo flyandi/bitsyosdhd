@@ -1,19 +1,21 @@
-# O3 Arm Faker for SAMD21 
+BitsyOSD HD
+=======
 
-Inspired by https://github.com/ramiss/arduino_DJI_03_RC_ARM
+*** WORK IN PROGRESS **
 
-This project uses the SAMD21 platform to create a powerful faker to arm your O3. Great for fixed wings that don't need a FC.
+BitsyOSD goes HD. BitsyOSD is a feature-rich standalong OSD firmware specficially designed for aerial vehicles that don't really need a flight controller such as fixed wings but still want digital OSD, ARM state and other features on their Caddx Vista and DJI Air units (O1 and O3). 
 
-I added also a PAN servo support. However both ARM and PAN signals have to come through SBUS as I specifically built it to use with the XF NANO RX.
+Inspired by https://github.com/ramiss/arduino_DJI_03_RC_ARM it uses the serial rich SAMD21 platform.
 
-**Features**
+## Features
 
 - O3 ARM State so you can get the full power
 - VBAT Display - YES
 - PAN Servo Support
 - More to come
 
-**Get Started**
+
+## Get Started
 
 1. Install the libs used for this one via the Arduino IDE:
 
@@ -36,4 +38,5 @@ A6 RX to O3
 ---
 
  This is a prototype and use is on your own terms. Good luck!
- 
+
+
